@@ -47,10 +47,12 @@ class GameScene extends Phaser.Scene {
   private upKey?: Phaser.Input.Keyboard.Key;
   private downKey?: Phaser.Input.Keyboard.Key;
   private id = uuid();
-  private players: {[key: string]: Phaser.GameObjects.Sprite} = {};
+  private players: { [key: string]: Phaser.GameObjects.Sprite } = {};
 
 
-  constructor() { super({ key: "GameScene" }); }
+  constructor() {
+    super({key: "GameScene"});
+  }
 
   /**
    * Load the assets required by the scene
@@ -77,7 +79,7 @@ class GameScene extends Phaser.Scene {
           // we don't need to update ourselves
           continue;
         }
-        const { x, y, frame } = allCoords[playerId];
+        const {x, y, frame} = allCoords[playerId];
         if (playerId in this.players) {
           // We have seen this player before, update it!
           const player = this.players[playerId];
@@ -114,25 +116,25 @@ class GameScene extends Phaser.Scene {
     // Player animations
     this.anims.create({
       key: "left",
-      frames: this.anims.generateFrameNumbers("player", { start: 8, end: 9 }),
+      frames: this.anims.generateFrameNumbers("player", {start: 8, end: 9}),
       frameRate: 10,
       repeat: -1
     });
     this.anims.create({
       key: "right",
-      frames: this.anims.generateFrameNumbers("player", { start: 1, end: 2 }),
+      frames: this.anims.generateFrameNumbers("player", {start: 1, end: 2}),
       frameRate: 10,
       repeat: -1
     });
     this.anims.create({
       key: "up",
-      frames: this.anims.generateFrameNumbers("player", { start: 11, end: 13 }),
+      frames: this.anims.generateFrameNumbers("player", {start: 11, end: 13}),
       frameRate: 10,
       repeat: -1
     });
     this.anims.create({
       key: "down",
-      frames: this.anims.generateFrameNumbers("player", { start: 4, end: 6 }),
+      frames: this.anims.generateFrameNumbers("player", {start: 4, end: 6}),
       frameRate: 10,
       repeat: -1
     });
@@ -202,6 +204,7 @@ class GameScene extends Phaser.Scene {
 
       this.players[this.id].update();
     }
+  }
 }
 
 
